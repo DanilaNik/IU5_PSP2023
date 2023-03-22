@@ -9,4 +9,4 @@
 6. [Реализация собственного API на Node.js, подключение к интерфейсу](https://github.com/DanilaNik/IU5_PSP2023/tree/main/lab6) [(Условие)](https://github.com/iu5git/JavaScript/blob/main/tutorials/lab6/README.md)
 
 ## Домашние задания:
-1. [Задача 12](https://github.com/DanilaNik/IU5_PSP2023/tree/main/dz1)
+1. [Задание 12](https://github.com/DanilaNik/IU5_PSP2023/tree/main/dz1) [(Условие)](https://github.com/iu5git/JavaScript/blob/main/tutorials/hw1/README.md)
