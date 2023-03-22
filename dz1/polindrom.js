@@ -32,7 +32,9 @@ function method2(string2){
     }
 }
 
+console.log(test_string1);
 method1(test_string1);//должно выводить Not polindrom from method 1
 method2(test_string1);//должно выводить Not polindrom from method 2
+console.log(test_string2);
 method1(test_string2);//должно выводить Polindrom from method 1
 method2(test_string2);//должно выводить Polindrom from method 2
