@@ -1,7 +1,3 @@
-let test_string1 = "aaaaaaabbbbbbccccbbbbbbaaaaaaaaaaaaaa"
-let test_string2 = "aaabaaa"
-
-
 function method1(string1){
     if(string1 === Array.from(string1).reverse().join('')){
         console.log("Polindrom from method 1")
@@ -32,9 +28,26 @@ function method2(string2){
     }
 }
 
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question("Enter test string: ", function (answer) {
+    method1(answer);
+    method2(answer);
+  rl.close();
+});
+
+
+/*
 console.log(test_string1);
 method1(test_string1);//должно выводить Not polindrom from method 1
 method2(test_string1);//должно выводить Not polindrom from method 2
 console.log(test_string2);
 method1(test_string2);//должно выводить Polindrom from method 1
 method2(test_string2);//должно выводить Polindrom from method 2
+*/
