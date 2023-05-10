@@ -1,5 +1,7 @@
 # Проектирование Сетевых Приложений
 
+[Репозиторий курса](https://github.com/iu5git/JavaScript/tree/main)
+
 ## Лабораторные работы:
 1. [Создание калькулятора. Верстка на HTML, CSS](https://github.com/DanilaNik/IU5_PSP2023/tree/main/lab1) [(Условие)](https://github.com/iu5git/JavaScript/blob/main/tutorials/lab1/README.md)
 2. [Создание калькулятора. Функции на JavaScript](https://github.com/DanilaNik/IU5_PSP2023/tree/main/lab2) [(Условие)](https://github.com/iu5git/JavaScript/blob/main/tutorials/lab2/README.md)
