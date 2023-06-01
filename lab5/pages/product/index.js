@@ -3,6 +3,7 @@ import { BackButtonComponent } from "../../components/back-button/index.js"
 import {ajax} from "../../modules/ajax.js";
 import {urls} from "../../modules/urls.js";
 import { MainPage } from "../main/index.js"
+import { groupId } from "../../modules/consts.js";
 
 export class ProductPage {
     constructor(parent, id) {
@@ -10,15 +11,23 @@ export class ProductPage {
         this.id = id
     }
 
-    getData() {
-        ajax.post(urls.getUserInfo(this.id), (data) => {
-            this.renderData(data.response)
-        })
+    async getData() {
+        let arr = await urls.getGroupMembers(groupId)
+        for (let i = 0; i < arr.response.items.length; i++) {
+            if(arr.response.items[i]['id'] == this.id) {
+                return arr.response.items[i];
+            }
+        }
     }
 
-    renderData(item) {
-        const product = new ProductComponent(this.pageRoot)
-        product.render(item[0])
+    async renderData(item) {
+        let userInfo = urls.getUserInfo(this.id)
+        let userData = await urls.getUser(userInfo);
+        const user = userData.response[0];
+        //['bdate', 'university_name', 'faculty_name']
+        //const { bdate, university_name, faculty_name } = user;
+        const product = new ProductComponent(this.pageRoot, userData.response[0]['bdate'], userData.response[0]['city'], userData.response[0]['university_name'], userData.response[0]['faculty_name']);
+        product.render(item);
     }
 
     get pageRoot() {
@@ -38,7 +47,7 @@ export class ProductPage {
         mainPage.render()
     }
 
-    render() {
+    async render() {
         this.parent.innerHTML = ''
         const html = this.getHTML()
         this.parent.insertAdjacentHTML('beforeend', html)
@@ -46,6 +55,7 @@ export class ProductPage {
         const backButton = new BackButtonComponent(this.pageRoot)
         backButton.render(this.clickBack.bind(this))
         
-        this.getData()
+        let data = await this.getData();
+        this.renderData(data);
     }
 }

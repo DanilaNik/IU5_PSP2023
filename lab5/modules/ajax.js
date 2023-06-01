@@ -1,15 +1,11 @@
 class Ajax {
-    post(url, callback) {
-        let xhr = new XMLHttpRequest()
-        xhr.open('POST', url)
-        xhr.send()
+    async post(url) {
+        let response = await fetch(url,{
+            method: "POST"
+        })
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                const data = JSON.parse(xhr.response)
-                callback(data)
-            }
-        }
+        let data = await response.json();
+        return data;
     }
 }
 

@@ -1,9 +1,15 @@
 export class ProductComponent {
-    constructor(parent) {
-        this.parent = parent
+    constructor(parent, bdate, city, university_name, faculty_name) {
+        this.parent = parent;
+        //this.data = data;
+        this.bdate = bdate;
+        this.city = city;
+        this.university_name = university_name;
+        this.faculty_name = faculty_name;
     }
 
     getHTML(data) {
+        //const { bdate, city, university_name, faculty_name } = this.data;
         return (
             `
                 <div class="card mb-3" style="width: 540px;">
@@ -16,10 +22,10 @@ export class ProductComponent {
                                 <h5 class="card-title">${data.first_name} ${data.last_name}</h5>
                             </div>
                             <div>
-                                <p>День рождения: ${data.bdate}</p>
-                                <p>Город: ${data.city.title}</p>
-                                <p>Университет: ${data.university_name}</p>
-                                <p>Факультет: ${data.faculty_name}</p>
+                                <p>День рождения: ${this.bdate}</p>
+                                <p>Город: ${this.city?.title || 'Информация не указана'}</p>
+                                <p>Университет: ${this.university_name || 'Информация не указана'}</p>
+                                <p>Факультет: ${this.faculty_name || 'Информация не указана'}</p> 
                             </div>
                         </div>
                     </div>
@@ -33,3 +39,21 @@ export class ProductComponent {
         this.parent.insertAdjacentHTML('beforeend', html)
     }
 }
+
+
+// this.city.title = city.title;
+// this.university_name = university_name;
+// this.faculty_name = faculty_name;
+
+
+
+
+{/* <div>
+<p>День рождения: ${data.bdate}</p>
+
+
+</div> */}
+
+{/* <p>Город: ${data.city?.title || ''}</p>
+<p>Университет: ${data.university_name || ''}</p>
+<p>Факультет: ${data.faculty_name || ''}</p>  */}
