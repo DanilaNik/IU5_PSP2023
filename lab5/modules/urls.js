@@ -1,4 +1,5 @@
 import {accessToken, version} from "./consts.js";
+import { ajax } from "./ajax.js";
 
 class Urls {
     constructor() {
@@ -10,8 +11,14 @@ class Urls {
         return `${this.url}/users.get?user_ids=${userId}&fields=photo_400_orig,city,bdate,education&${this.commonInfo}`
     }
 
-    getGroupMembers(groupId) {
-        return `${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig&${this.commonInfo}`
+    async getGroupMembers(groupId) {
+        let data = await ajax.post(`${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig&${this.commonInfo}`);
+        return data;
+    }
+
+    async getUser(groupId) {
+        let data = await ajax.post(groupId);
+        return data;
     }
 }
 
